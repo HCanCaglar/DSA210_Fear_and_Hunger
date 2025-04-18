@@ -1,11 +1,103 @@
-Data analysis on Items of Fear & Hunger game:
+# Fear & Hunger Item Analysis - DSA210 Project
 
-My project for DSA210 will be about collecting and visualizing data as well as applying machine learning for items for the RPG Maker game Fear & Hunger. There are variety of items and character conditions in the game but I will be focusing on weapons and status effects. My main motivation for maknig this project is for the new players of the game to be able to deduct and get a basic idea of how useful the items they get in the game ad how dangerous the ailments they get from the enemies, since this game holds no tutorial or whatsoever and you have to spend countless hours just to learn the game.
+This project explores the strategic decision-making behind weapon selection and status effect management in the game *Fear & Hunger*. The core aim is to quantify the **usefulness of weapons** and the **danger level of status effects** by building structured datasets, applying data science techniques, and developing predictive models based on in-game factors.
 
-There is a basic set of data for each item available at Fear & Hunger Wiki, but the data in there isn’t enough to list weapons about how useful or rare they are or how dangerous the status effects are, since item distribution of the game is divided into three: availability on guaranteed spots, availability on enemies and spawned under RNG. Therefore I will search the web and forums to create another dataset to create “useful” set for weapons and “danger level” for status effects which will be created and added by me to enrich the already existing dataset.
+Using a custom-built dataset with numerical features, I will score and analyze each weapon and status effect, visualize trends, and use clustering and regression to extract actionable insights for players.
 
-Rarity of weapons and danger level for status effects will be calculated mathematically. For example, usefullness of weapons will be calculated according to: how many other weapons with same atk value exist in the game and how many different ways you can get the item. For example, meat cleaver will be one of the least useful weapons because it has 30 atk and can be obtained from 2 types of enemies that exist abundently in the game, so the uselessness of it will be calculated by how many weapons there are above 30 atk and number of enemy types times number of enemies existing in the game holding the weapon.
+---
 
-Danger level of status effects will also be calculated by mathematical comparison. main indicators will be: how many different ways you can get the status effect, how many ways there exist to cure the status effect and availability of the cures for status effects. for example bleed is pretty common but there are variety of resources to cure it so based on the calculation :number of enemies that can apply bleed + number of traps that can apply bleed – number of resources to cure bleed will give a danger level for the bleed effect. Also, for limb losses, both leg loss and arm loss are uncurable, however number of ways to lose an arm is greater than losing a leg, so arm loss will have higher danger level compared to bleed. Of course the dataset used for items to cure a status effect will be linear. If its uncurable its value will be 0, if we can find it with RNG spawn locations it will be +1 and if we can obtain it by guarantee we will ad 1x(number of guarantee obtaining places) and depending how high this number is, the status ailment will get less dangerous.
+*Fear & Hunger* is a punishing game where player success hinges on understanding obscure mechanics. With no built-in guidance, most decisions about which items to use or which effects to avoid are made through trial and error.
 
-Machine learning will be used to calculate which weapons are most or least useful and which status effects are most or least dangerous by the end of calculations on the datasets.
+This project gives me the chance to combine:
+- My interest in RNG based  survival games like *Fear & Hunger*
+- A desire to turn hard-to-access game knowledge into helpful, data-driven resources for other players to use
+
+---
+
+
+The dataset is being created manually and sourced from:
+- **Fear & Hunger Wiki**
+- In-game observations from a Youtube walkthrough
+
+### Weapons Dataset (`weapons.csv`)
+| Column | Description |
+|--------|-------------|
+| Name | Weapon name |
+| ATK | Attack value |
+| #AltWeaponsLowerOrEqual | Number of weapons with lower or equal ATK |
+| WeaponNumber | ty
+| AcquisitionType | `Guaranteed`, `RNG`, or `Enemy Drop`  | (one weapon can have multiple ways of obtaining it)
+| NumEnemiesDrop | Number of enemies that drop this weapon |
+| EnemyPopulationDrop     | Total number of individual enemies that can drop this weapon |
+| NumRNGSpots | Number of RNG locations it can be found / totalRNGspots |
+| NumGuaranteedSpots | Number of fixed spots it can be obtained from |
+| UsefulnessScore | Calculated as: `#AltWeaponsLowerOrEqual + (NumEnemiesDrop × EnemyPopulationDrop) − (NumGuaranteedSpots + (NumRNGSpots/)`|
+
+### Status Effects Dataset (`status_effects.csv`)
+| Column | Description |
+|--------|-------------|
+| Name | Status effect name |
+| NumWaysToGet | Total number of sources that apply it |
+| NumCures | Number of known cures for the status effect |
+| NumGuaranteedSpots | Number of curing items found as guaranteed |
+| NumRNGSpots | Number of RNG locations that curing items can be found |
+| CureAvailabilityScore | Calculated for each status as: NumGuaranteedSpots + (NumRNGSpots/NumCures)
+| Uncurable | 1 if there is no known cure, 0 otherwise |
+| DangerLevel | Calculated as: `(NumWaysToGet − CureAvailabilityScore)+(Uncurable * 20)` |
+
+---
+
+## Research Questions & Hypotheses
+
+### RQ1: Which weapons are most useful?
+- **H₀**: Weapon acquisition method and ATK value are not correlated with usefulness.
+- **Hₐ**: Weapons with higher ATK and easier acquisition paths are significantly more useful.
+
+### RQ2: Which status effects are the most dangerous?
+- **H₀**: All status effects are equally dangerous.
+- **Hₐ**: Status effects with fewer cures and higher frequency of application are more dangerous.
+
+---
+
+## Data Collection Plan
+- Data will be logged manually in Excel using the fields above and more if necessary.
+- Acquisition and application types will be categorized based on F&H wiki info and verified in-game if possible.
+- Subjective scores will be calculated.
+
+---
+
+## Data Analysis Plan
+
+### Exploratory Data Analysis
+- Histograms of attack values and cure counts
+- Correlation matrices between availability and usefulness
+- Group comparisons (e.g. Guaranteed vs RNG weapons)
+
+### Visualizations
+- **Heatmaps** showing relationships between variables
+- **Bar plots** ranking danger level and usefulness
+- **Cluster plots** showing groupings of weapons/statuses
+
+---
+
+## Tools & Technologies
+- **Python** for scripting and analysis
+- **Pandas** and **NumPy** for data wrangling
+- **Matplotlib** and **Seaborn** for visualizations
+- **Excel** for initial data collection
+
+---
+
+## Expected Insights
+- A ranked list of weapons by combined attack value and acquisition ease
+- A ranked list of status effects by difficulty to cure and frequency
+- Simple, visually intuitive guides that players can refer to for better decision-making
+
+---
+
+## Limitations & Future Work
+- Some variables (like encounter rate) are subjective or hard to measure because the game has 3 different maps 
+- Data sources may be incomplete or inconsistent because data will be collected by walkthrough video
+- Future work may include:
+  - Ranking the Magic spells
+  - Enemy threat level ranking
