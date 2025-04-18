@@ -25,7 +25,7 @@ The dataset is being created manually and sourced from:
 | Name | Weapon name |
 | ATK | Attack value |
 | #AltWeaponsLowerOrEqual | Number of weapons with lower or equal ATK |
-| WeaponNumber | ty
+| WeaponNumber | how many copies of this specific weapon can be obtained, calculated by guaranteed and enemy drops|
 | AcquisitionType | `Guaranteed`, `RNG`, or `Enemy Drop`  | (one weapon can have multiple ways of obtaining it)
 | NumEnemiesDrop | Number of enemies that drop this weapon |
 | EnemyPopulationDrop     | Total number of individual enemies that can drop this weapon |
