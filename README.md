@@ -17,7 +17,7 @@ This project gives me the chance to combine:
 
 The dataset is being created manually and sourced from:
 - **Fear & Hunger Wiki**
-- In-game observations from a Youtube walkthrough
+- In-game observations from a Youtube walkthrough: https://www.youtube.com/watch?v=Nx5cuJA_lIs
 
 ### Weapons Dataset (`weapons.csv`)
 | Column | Description |
@@ -31,7 +31,7 @@ The dataset is being created manually and sourced from:
 | EnemyPopulationDrop     | Total number of individual enemies that can drop this weapon |
 | NumRNGSpots | Number of RNG locations it can be found / totalRNGspots |
 | NumGuaranteedSpots | Number of fixed spots it can be obtained from |
-| UsefulnessScore | Calculated as: `#AltWeaponsLowerOrEqual * (NumEnemiesDrop) + (NumGuaranteedSpots + (NumRNGSpots)`|
+| UsefulnessScore | Calculated as: `#AltWeaponsLowerOrEqual * (NumEnemiesDrop) + (NumGuaranteedSpots + (NumRNGSpots)`| 
 
 ### Status Effects Dataset (`status_effects.csv`)
 | Column | Description |
