@@ -25,7 +25,7 @@ The dataset is being created manually and sourced from:
 | Name | Weapon name |
 | ATK | Attack value |
 | #AltWeaponsLowerOrEqual | Number of weapons with lower or equal ATK |
-| WeaponNumber | how many copies of this specific weapon can be obtained, calculated by guaranteed and enemy drops|
+| WeaponNumber | how many copies of this specific weapon can be obtained, calculated by RNG, guaranteed and enemy drops|
 | AcquisitionType | `Guaranteed`, `RNG`, or `Enemy Drop` (one weapon can have multiple ways of obtaining it) | 
 | NumEnemiesDrop | Number of enemies that drop this weapon |
 | EnemyPopulationDrop     | Total number of individual enemies that can drop this weapon |
@@ -37,9 +37,9 @@ The dataset is being created manually and sourced from:
 | Column | Description |
 |--------|-------------|
 | Name | Status effect name |
-| NumEnemiesToGet | Total number of sources that apply it |
+| NumEnemiesToGet | Total number of enemies that apply it |
 | NumCures | Number of known cures for the status effect |
-| CureAvailabilityScore | Calculated for each status as (total RNG spots/ item count) + guaranteed spots [craftability isnt included] |
+| CureAvailabilityScore | Calculated for each status as (total RNG spots/ item count) + guaranteed spots |
 | Curability | 1 if there is no known cure, 0 otherwise |
 | DangerLevel | Calculated as: `(NumWaysToGet − CureAvailabilityScore)+(Uncurable * 20)` |
 
@@ -87,6 +87,9 @@ The dataset is being created manually and sourced from:
 ## Limitations & Future Work
 - Some variables (like encounter rate) are subjective or hard to measure because the game has 3 different maps 
 - Data sources may be incomplete or inconsistent because data will be collected by walkthrough video
+- Many other data such as traps and craftable items has to be ignored for this project
+- We have to assume that rng spots only drop these status curing items for data.
 - Future work may include:
   - Ranking the Magic spells
   - Enemy threat level ranking
+  - very long time spent on gameplay to get more consistent data
