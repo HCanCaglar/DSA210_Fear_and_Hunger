@@ -37,7 +37,7 @@ The dataset is being created manually and sourced from:
 | Column | Description |
 |--------|-------------|
 | Name | Status effect name |
-| NumWaysToGet | Total number of sources that apply it |
+| NumEnemiesToGet | Total number of sources that apply it |
 | NumCures | Number of known cures for the status effect |
 | NumGuaranteedSpots | Number of curing items found as guaranteed |
 | NumRNGSpots | Number of RNG locations that curing items can be found |
