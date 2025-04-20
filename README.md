@@ -42,7 +42,7 @@ The dataset is being created manually and sourced from:
 | NumGuaranteedSpots | Number of curing items found as guaranteed |
 | NumRNGSpots | Number of RNG locations that curing items can be found |
 | CureAvailabilityScore | Calculated for each status as: NumGuaranteedSpots + (NumRNGSpots/NumCures) |
-| Uncurable | 1 if there is no known cure, 0 otherwise |
+| Curability | 1 if there is no known cure, 0 otherwise |
 | DangerLevel | Calculated as: `(NumWaysToGet − CureAvailabilityScore)+(Uncurable * 20)` |
 
 ---
