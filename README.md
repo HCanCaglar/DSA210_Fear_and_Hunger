@@ -41,7 +41,7 @@ The dataset is being created manually and sourced from:
 | NumCures | Number of known cures for the status effect |
 | NumGuaranteedSpots | Number of curing items found as guaranteed |
 | NumRNGSpots | Number of RNG locations that curing items can be found |
-| CureAvailabilityScore | Calculated for each status as: NumGuaranteedSpots + (NumRNGSpots/NumCures)
+| CureAvailabilityScore | Calculated for each status as: NumGuaranteedSpots + (NumRNGSpots/NumCures) |
 | Uncurable | 1 if there is no known cure, 0 otherwise |
 | DangerLevel | Calculated as: `(NumWaysToGet − CureAvailabilityScore)+(Uncurable * 20)` |
 
@@ -68,15 +68,6 @@ The dataset is being created manually and sourced from:
 
 ## Data Analysis Plan
 
-### Exploratory Data Analysis
-- Histograms of attack values and cure counts
-- Correlation matrices between availability and usefulness
-- Group comparisons (e.g. Guaranteed vs RNG weapons)
-
-### Visualizations
-- **Heatmaps** showing relationships between variables
-- **Bar plots** ranking danger level and usefulness
-- **Cluster plots** showing groupings of weapons/statuses
 
 ---
 
