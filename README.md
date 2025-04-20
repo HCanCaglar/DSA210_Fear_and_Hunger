@@ -31,7 +31,7 @@ The dataset is being created manually and sourced from:
 | EnemyPopulationDrop     | Total number of individual enemies that can drop this weapon |
 | NumRNGSpots | Number of RNG locations it can be found / totalRNGspots |
 | NumGuaranteedSpots | Number of fixed spots it can be obtained from |
-| UsefulnessScore | Calculated as: `#AltWeaponsLowerOrEqual + (NumEnemiesDrop × EnemyPopulationDrop) − (NumGuaranteedSpots + (NumRNGSpots/)`|
+| UsefulnessScore | Calculated as: `#AltWeaponsLowerOrEqual * (NumEnemiesDrop) + (NumGuaranteedSpots + (NumRNGSpots)`|
 
 ### Status Effects Dataset (`status_effects.csv`)
 | Column | Description |
