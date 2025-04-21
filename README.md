@@ -39,7 +39,7 @@ The dataset is being created manually and sourced from:
 | Name | Status effect name |
 | NumEnemiesToGet | Total number of enemies that apply it |
 | NumCures | Number of known cures for the status effect |
-| CureAvailabilityScore | Calculated for each status as (total RNG spots/ item count) + guaranteed spots |
+| TotalCureCount | Calculated for each status as (total RNG spots/ item count) + guaranteed spots |
 | Curability | 1 if there is no known cure, 0 otherwise |
 | DangerLevel | Calculated as: `(NumWaysToGet − CureAvailabilityScore)+(Uncurable * 20)` |
 
