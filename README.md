@@ -55,6 +55,23 @@ The dataset is being created manually and sourced from:
 - **H₀**: All status effects are equally dangerous.
 - **Hₐ**: Status effects with fewer cures and higher frequency of application are more dangerous.
 
+### RQ1: Is ATK related to a weapons usefulness?
+- **H₀**: Weapon ATK value is not correlated with usefulness.
+- **Hₐ**: Weapons with higher ATK are significantly more useful.
+
+### RQ2: Does a weapon's frequency affects its usefulness?
+- **H₀**: Weapon acquisition method is not correlated with usefulness.
+- **Hₐ**: Weapons with more acquisition paths are significantly more useful.
+
+### RQ3: Do status effects get more dangerous with their frequency?
+- **H₀**: Frequancy of a status effect does not make it more dangerous.
+- **Hₐ**: Status effects with higher frequency of application are more dangerous.
+
+### RQ4: Do status effects get more dangerous if they have no cure?
+- **H₀**: Curability of a status effect does not make it more dangerous.
+- **Hₐ**: Status effects with fewer cures are more dangerous.
+
+
 ---
 
 ## Data Collection Plan
