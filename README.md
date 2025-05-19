@@ -81,8 +81,28 @@ The dataset is being created manually and sourced from:
 
 ---
 
-## Data Analysis Plan
+## Machine Learning Integration
 
+To move beyond descriptive statistics and validate the underlying relationships in the dataset, supervised machine learning models were applied to both weapon and status effect data.
+
+### Weapon Usefulness Prediction
+A **multiple linear regression model** was trained to predict the `UsefulnessScore` of each weapon based on key numeric and categorical features, including `ATK`, acquisition frequency, and drop type. Categorical acquisition methods (`RNG`, `Guaranteed`, `Enemy Drop`) were encoded using multi-label binarization. The model achieved an R² of ~0.999, confirming that `UsefulnessScore` is strongly and linearly correlated with measurable attributes.
+
+Alternative model **K-Nearest Neighbors** were also evaluated. However, their performance was weaker due to the small dataset size and the how the `UsefulnessScore` formula is calculated. Linear regression was both the most accurate and most interpretable model for this task.
+
+### Status Effect DangerLevel Prediction
+A similar regression was applied to the `status_effects.csv` dataset to model `DangerLevel`, a derived score based on the frequency of application, number of cures, and curability.Both linear regression and KNN models were trained.
+
+Linear regression again proved highly effective, with R² scores near 0.999. This suggests that `DangerLevel`, like `UsefulnessScore`, behaves in a predictable and explainable linear manner based on underlying mechanics. However by the unnaturality of randomly chosen status effects for the ML sometimes KNN model predicted very close to what MLR model and sometimes much much worse negative R² values, so it is concluded that MLR is a more consistant model
+
+### ML Workflow Summary
+The machine learning workflow included:
+- Model training and evaluation using:
+  - R² score (variance explained)
+  - RMSE (prediction error)
+- Visualization of predicted vs actual scores, annotated with item names
+
+This ML component validates that game design decisions (weapon availability, status severity) can be modeled with high accuracy.
 
 ---
 
