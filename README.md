@@ -83,7 +83,7 @@ The dataset is being created manually and sourced from:
 
 ## Machine Learning Integration
 
-To move beyond descriptive statistics and validate the underlying relationships in the dataset, supervised machine learning models were applied to both weapon and status effect data.
+To move beyond descriptive statistics and validate the underlying relationships in the dataset, supervised machine learning models of Linear Regression and K-nearest neşghbours were applied and compared with each other, to both weapon and status effect data.
 
 ### Weapon Usefulness Prediction
 A **multiple linear regression model** was trained to predict the `UsefulnessScore` of each weapon based on key numeric and categorical features, including `ATK`, acquisition frequency, and drop type. Categorical acquisition methods (`RNG`, `Guaranteed`, `Enemy Drop`) were encoded using multi-label binarization. The model achieved an R² of ~0.999, confirming that `UsefulnessScore` is strongly and linearly correlated with measurable attributes.
@@ -100,7 +100,7 @@ The machine learning workflow included:
 - Model training and evaluation using:
   - R² score (variance explained)
   - RMSE (prediction error)
-- Visualization of predicted vs actual scores, annotated with item names
+- Visualization of predicted vs actual scores, annotated with weapon/item names
 
 This ML component validates that game design decisions (weapon availability, status severity) can be modeled with high accuracy.
 
@@ -121,9 +121,17 @@ This ML component validates that game design decisions (weapon availability, sta
 
 ---
 
+## Interesting Findings
+- Collected data and conclusions made by the hypothesis tests are not always accurate to the game knowledge
+- sometimes some status effects are more dangerous than the others despite having the same numerical danger lever value
+- for calculations we had to assume many things about RNG spawing or being able to use everything we have for curing status effects and nothing else
+- all these assumtions make ome status effects look less dangerous than they are as well
+- same thing for weapons, some weapons have similar usefulness score but anyone who plays the game will see that some weapons with high usefulnessscore are very useless
+
+---
 ## Limitations & Future Work
 - Some variables (like encounter rate) are subjective or hard to measure because the game has 3 different maps 
-- Data sources may be incomplete or inconsistent because data will be collected by walkthrough video
+- Data sources may be incomplete or inconsistent because data will be collected by walkthrough video and wiki page
 - Many other data such as traps and craftable items has to be ignored for this project
 - We have to assume that rng spots only drop these status curing items for data.
 - Future work may include:
